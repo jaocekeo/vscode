@@ -95,10 +95,12 @@ export interface IStatusbarService {
 	 *
 	 * @param id  identifier of the entry is needed to allow users to hide entries via settings
 	 * @param alignment either LEFT or RIGHT
-	 * @param priority items get arranged from highest priority to lowest priority from left to right
-	 * in their respective alignment slot
+	 * @param priorityOrEntryId either a number or the identifier of another entry. For a number,
+	 * items get arranged from highest priority to lowest priority from left to right in their
+	 * respective alignment slot. When an identifier is used, the entry will be positioned to the
+	 * LEFT or RIGHT depending on the `alignment` property.
 	 */
-	addEntry(entry: IStatusbarEntry, id: string, alignment: StatusbarAlignment, priority?: number): IStatusbarEntryAccessor;
+	addEntry(entry: IStatusbarEntry, id: string, alignment: StatusbarAlignment, priorityOrEntryId?: number | string): IStatusbarEntryAccessor;
 
 	/**
 	 * An event that is triggered when an entry's visibility is changed.

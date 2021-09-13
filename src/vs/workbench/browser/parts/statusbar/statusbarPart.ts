@@ -93,9 +93,9 @@ export class StatusbarPart extends Part implements IStatusbarService {
 		this._register(this.contextService.onDidChangeWorkbenchState(() => this.updateStyles()));
 	}
 
-	addEntry(entry: IStatusbarEntry, id: string, alignment: StatusbarAlignment, primaryPriority = 0): IStatusbarEntryAccessor {
+	addEntry(entry: IStatusbarEntry, id: string, alignment: StatusbarAlignment, priorityOrEntryId: number | string = 0): IStatusbarEntryAccessor {
 		const priority: IStatusbarEntryPriority = {
-			primary: primaryPriority,
+			primary: priorityOrEntryId,
 			secondary: hash(id) // derive from identifier to accomplish uniqueness
 		};
 

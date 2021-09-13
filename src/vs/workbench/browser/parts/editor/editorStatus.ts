@@ -506,7 +506,7 @@ export class EditorStatus extends Disposable implements IWorkbenchContribution {
 			command: 'workbench.action.editor.changeEncoding'
 		};
 
-		this.updateElement(this.encodingElement, props, 'status.editor.encoding', StatusbarAlignment.RIGHT, 100.3);
+		this.updateElement(this.encodingElement, props, 'status.editor.encoding', StatusbarAlignment.RIGHT, 'status.editor.mode');
 	}
 
 	private updateEOLElement(text: string | undefined): void {
@@ -559,7 +559,7 @@ export class EditorStatus extends Disposable implements IWorkbenchContribution {
 		this.updateElement(this.metadataElement, props, 'status.editor.info', StatusbarAlignment.RIGHT, 100);
 	}
 
-	private updateElement(element: MutableDisposable<IStatusbarEntryAccessor>, props: IStatusbarEntry, id: string, alignment: StatusbarAlignment, priority: number) {
+	private updateElement(element: MutableDisposable<IStatusbarEntryAccessor>, props: IStatusbarEntry, id: string, alignment: StatusbarAlignment, priority: number | string) {
 		if (!element.value) {
 			element.value = this.statusbarService.addEntry(props, id, alignment, priority);
 		} else {
